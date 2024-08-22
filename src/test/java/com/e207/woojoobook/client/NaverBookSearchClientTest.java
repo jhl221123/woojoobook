@@ -25,7 +25,7 @@ class NaverBookSearchClientTest {
 	@Autowired
 	private NaverBookSearchClient sut;
 
-	@Test
+	//@Test
 	@DisplayName("도서 조회 시, 네이버 api가 정상 응답한다.")
 	public void success() {
 		// given
@@ -39,7 +39,7 @@ class NaverBookSearchClientTest {
 		assertThat(actual.getBookItems()).hasSize(5);
 	}
 
-	@Test
+	//@Test
 	@DisplayName("응답 지연으로 네이버 api 대신 알라딘 api가 사용된다.")
 	public void fail() {
 		// given

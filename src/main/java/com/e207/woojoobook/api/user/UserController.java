@@ -86,11 +86,7 @@ public class UserController {
 	}
 
 	@GetMapping("/users/emails/{email}")
-	public ResponseEntity<?> checkDuplicateEmail(@PathVariable("email") @Email String email, Errors errors) {
-		if (errors.hasErrors()) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("이메일 형식이 아닙니다,.");
-		}
-
+	public ResponseEntity<?> checkDuplicateEmail(@PathVariable("email") String email) {
 		boolean isDuplicate = this.userService.checkDuplicateEmail(email);
 
 		return ResponseEntity.status(HttpStatus.OK).body(new VerifyResponse(isDuplicate));

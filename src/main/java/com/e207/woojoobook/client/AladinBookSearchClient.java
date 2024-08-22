@@ -31,7 +31,7 @@ public class AladinBookSearchClient implements BookSearchClient {
 
 	public AladinBookSearchClient(@Value("${api.aladin.baseUrl}") String baseUrl,
 		@Value("${api.aladin.timeout}") String timeout,
-		@Value("${aladin-client-ttbkey}") String aladinClientKey) {
+		@Value("${api.aladin.aladin-client-ttbkey}") String aladinClientKey) {
 		restClient = createRestClient(baseUrl, Integer.valueOf(timeout));
 		this.clientKey = aladinClientKey;
 	}

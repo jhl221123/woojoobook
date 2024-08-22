@@ -33,8 +33,8 @@ public class NaverBookSearchClient implements BookSearchClient {
 	public NaverBookSearchClient(BookSearchClient aladinBookSearchClient,
 		@Value("${api.naver.baseUrl}") String baseUrl,
 		@Value("${api.naver.timeout}") String timeout,
-		@Value("${naver-client-key}") String clientId,
-		@Value("${naver-client-secret}") String clientSecret) {
+		@Value("${api.naver.naver-client-key}") String clientId,
+		@Value("${api.naver.naver-client-secret}") String clientSecret) {
 		this.restClient = createRestClient(baseUrl, Integer.valueOf(timeout));
 		this.clientId = clientId;
 		this.clientSecret = clientSecret;

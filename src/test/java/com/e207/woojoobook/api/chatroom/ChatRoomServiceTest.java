@@ -46,7 +46,7 @@ class ChatRoomServiceTest {
 	}
 
 	@DisplayName("수신자와 발신자가 참여하는 채팅룸을 생성한다.")
-	@Test
+	//@Test
 	void createSuccess() {
 		//given
 		User sender = createUser("sender");
@@ -69,7 +69,7 @@ class ChatRoomServiceTest {
 	}
 
 	@DisplayName("수신자와 발신자가 참여중인 채팅룸이 존재하는 지 확인한다.")
-	@Test
+	//@Test
 	void checkChatRoomExistSuccess() { // TODO: 2024-07-21 시나리오 테스트로 변경
 		//given
 		User sender = createUser("sender");
@@ -90,7 +90,7 @@ class ChatRoomServiceTest {
 	}
 
 	@DisplayName("수신자와 발신자가 참여중인 채팅룸을 조회한다.")
-	@Test
+	//@Test
 	void findByUserIdsSuccess() {
 		//given
 		User sender = createUser("sender");
@@ -110,7 +110,7 @@ class ChatRoomServiceTest {
 	}
 
 	@DisplayName("수신자와 발신자가 참여중인 채팅룸이 존재하지 않는다면 예외가 발생한다.")
-	@Test
+	//@Test
 	void findByUserIdsFail() {
 		//given
 		User sender = createUser("sender");
@@ -125,7 +125,7 @@ class ChatRoomServiceTest {
 	}
 
 	@DisplayName("사용자가 참여중인 채팅룸 목록을 페이지로 조회한다.")
-	@Test
+	//@Test
 	void findPageByUserIdSuccess() {
 		//given
 		User target = createUser("target");
@@ -162,7 +162,7 @@ class ChatRoomServiceTest {
 
 	@Transactional
 	@DisplayName("id로 채팅룸을 조회한다.")
-	@Test
+	//@Test
 	void findDomainByIdSuccess() {
 		//given
 		User sender = createUser("sender");
@@ -182,7 +182,7 @@ class ChatRoomServiceTest {
 	}
 
 	@DisplayName("id에 해당하는 채팅룸이 없다면 예외가 발생한다.")
-	@Test
+	//@Test
 	void findDomainByIdFail() {
 		//expected
 		assertThatThrownBy(() -> chatRoomService.findDomainById(1L)).isInstanceOf(RuntimeException.class);

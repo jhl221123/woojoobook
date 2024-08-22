@@ -1,0 +1,105 @@
+spring:
+  application:
+    name: woojoobook
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: e207.woojoobook@gmail.com
+    password:
+    properties:
+      mail:
+        smtp:
+          auth: true
+          timeout: 5000
+          starttls:
+            enable: true
+  h2:
+    console:
+      enabled: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/woojoobook
+    username: root
+    password: 1111
+
+jwt:
+  secret:
+    key:
+  expiration:
+    time: 10000000
+
+api:
+  naver:
+    naver-client-key:
+    naver-client-secret:
+    baseUrl: https://openapi.naver.com
+    timeout: 2000
+  aladin:
+    aladin-client-ttbkey:
+    baseUrl: http://www.aladin.co.kr
+    timeout: 2000
+
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        failureRateThreshold: 50
+        slowCallRateThreshold: 80
+        slowCallDurationThreshold: 2000ms
+        recordExceptions:
+          - java.io.IOException
+          - java.util.concurrent.TimeoutException
+        automaticTransitionFromOpenToHalfOpenEnabled: false
+    instances:
+      naver-api-client:
+        minimumNumberOfCalls: 10
+        slidingWindowSize: 10
+        slidingWindowType: TIME_BASED
+        waitDurationInOpenState: 200ms
+        permittedNumberOfCallsInHalfOpenState: 3
+      aladin-api-client:
+        minimumNumberOfCalls: 20
+        slidingWindowSize: 30
+        slidingWindowType: TIME_BASED
+        waitDurationInOpenState: 1000ms
+        permittedNumberOfCallsInHalfOpenState: 10
+
+management:
+  server:
+    port: 8081
+  health:
+    circuitbreakers:
+      enabled: true
+    mail:
+      enabled: false
+  info:
+    java:
+      enabled: true
+    os:
+      enabled: true
+  metrics:
+    enable:
+      resilience4j.circuitbreaker.calls: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+userbook:
+  search:
+    ereacode:
+      count: 3
+
+#database:
+#  url: jdbc:mysql://localhost:3306/woojoobook
+#  username: root
+#  password: 1111

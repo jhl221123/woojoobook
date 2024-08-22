@@ -22,8 +22,7 @@ import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@Profile("local")
-@Component
+// @Component
 public class InitDataGenerator {
 	private final UserRepository userRepository;
 	private final PasswordEncoder passwordEncoder;

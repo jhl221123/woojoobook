@@ -12,7 +12,6 @@ import com.e207.woojoobook.api.chatroom.interceptor.StompInterceptor;
 
 import lombok.RequiredArgsConstructor;
 
-@Profile("prod")
 @Configuration
 @EnableWebSocketMessageBroker
 @RequiredArgsConstructor
@@ -24,14 +23,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	public void configureMessageBroker(MessageBrokerRegistry config) {
 		config
 			.setApplicationDestinationPrefixes("/app")
-			.enableStompBrokerRelay("/topic")
-			.setRelayHost("rabbitmq")
-			.setVirtualHost("/")
-			.setRelayPort(61613)
-			.setSystemLogin("admin")
-			.setSystemPasscode("e207")
-			.setClientLogin("guest")
-			.setClientPasscode("e207");
+			.enableSimpleBroker("/topic");
 	}
 
 	@Override

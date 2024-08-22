@@ -5,7 +5,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Component;
 
 @Profile("!prod")
-@Component
+// @Component
 public class LocalMailSender implements MailSender {
 	@Override
 	public void send(SimpleMailMessage message) {
